@@ -12,7 +12,7 @@ from langchain_core.runnables import RunnablePassthrough
 
 # function to load the vectordatabase
 def load_knowledgeBase():
-    embeddings = OpenAIEmbeddings(api_key="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")
+    embeddings = OpenAIEmbeddings(api_key="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")
     DB_FAISS_PATH = 'vectorstore/db_faiss'
     db = FAISS.load_local(DB_FAISS_PATH, embeddings)
     return db
@@ -21,7 +21,7 @@ def load_knowledgeBase():
 # function to load the OPENAI LLM
 def load_llm():
     from langchain_openai import ChatOpenAI
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key="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")
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, api_key="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")
     return llm
 
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         # getting only the chunks that are similar to the query for llm to produce the output
         similar_embeddings = knowledgeBase.similarity_search(query)
         similar_embeddings = FAISS.from_documents(documents=similar_embeddings,
-                                                  embedding=OpenAIEmbeddings(api_key="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"))
+                                                  embedding=OpenAIEmbeddings(api_key="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"))
 
         # creating the chain for integrating llm,prompt,stroutputparser
         retriever = similar_embeddings.as_retriever()

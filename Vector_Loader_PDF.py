@@ -13,5 +13,5 @@ if __name__=="__main__":
         docs=loader.load()
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         splits = text_splitter.split_documents(docs)
-        vectorstore = FAISS.from_documents(documents=splits, embedding=OpenAIEmbeddings(api_key="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"))
+        vectorstore = FAISS.from_documents(documents=splits, embedding=OpenAIEmbeddings(api_key="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"))
         vectorstore.save_local(DB_FAISS_PATH)
